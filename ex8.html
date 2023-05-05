@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+
+    </script>
+</head>
+<body>
+    <div id="app">
+        <h2> Liste des produits </h2>
+        <ul>
+            <li v-for="produit in listeProduits">
+                {{ produit.nom }} - {{ produit.quantite }}
+                <span v-if="produit.quantite <30">(STOCK PRESQUE EPUISE)</span>
+            </li>
+        </ul>
+        <h2>Total d'inventaire : {{ totalProduit }}</h2>
+    </div>
+
+    <script type="text/javascript">
+        var app= new Vue({
+            el: "#app",
+            data: {
+                listeProduits: []
+            },
+            computed : {
+                totalProduit (){
+                    return this.listeProduits.reduce((somme, produit)=>{
+                        return somme + produit.quantite;
+                    },0);
+                }
+            },
+            created(){
+                fetch("produits.json")
+                .then (response => response.json())
+                .then (json => {
+                    this.listeProduits = json.products;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

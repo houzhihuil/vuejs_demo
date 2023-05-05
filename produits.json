@@ -1,0 +1,24 @@
+{
+	"products" : [
+		{
+			"id" : 1,
+			"quantite" : 50,
+			"nom" : "Ordinateur"
+		},
+		{
+			"id" : 2,
+			"quantite" : 25,
+			"nom" : "Clavier"
+		},
+		{
+			"id" : 3,
+			"quantite" : 30,
+			"nom" : "Ecran"
+		},
+		{
+			"id" : 4,
+			"quantite" : 80,
+			"nom" : "Souris"
+		}
+	]
+}
